@@ -16,3 +16,7 @@ Kızılelma'nın masaüstü uygulamasının indirme dosyaları. Bu depoda kod yo
 - **Linux:** Dosyayı çalıştırılabilir yap ve aç: `chmod +x Kizilelma-Linux-x86_64.AppImage && ./Kizilelma-Linux-x86_64.AppImage`. Oturum masaüstünün anahtarlığında (GNOME Keyring, KWallet) saklanır.
 
 Tarayıcıda kurulum gerekmeden: [app.kizilelma.app](https://app.kizilelma.app)
+
+## Derleme
+
+Dosyalar bu depodaki [Desktop release](.github/workflows/release.yml) iş akışıyla, GitHub'ın Windows, macOS ve Linux makinelerinde derlenir. Uygulamanın kodu ayrı ve özel bir depoda durur; iş akışı onu yalnızca derleme için çeker, burada yayınlanmaz.
