@@ -100,6 +100,7 @@ jobs:
           flutter build "${{ matrix.platform }}" --release --build-name="$VERSION" \
             --dart-define=API_URL="$API_URL" --dart-define=WEB_URL="$WEB_URL"
 
+      # Inno Setup reads relative paths from the .iss file's folder, so both are absolute.
       - name: Windows installer
         if: matrix.platform == 'windows'
         run: |
@@ -107,7 +108,7 @@ jobs:
           iscc="/c/Program Files (x86)/Inno Setup 6/ISCC.exe"
           [ -f "$iscc" ] || choco install innosetup -y --no-progress > /dev/null
           "$iscc" -Q "-DAppVersion=$VERSION" \
-            "-DSourceDir=$(cygpath -w build/windows/x64/runner/Release)" \
+            "-DSourceDir=$(cygpath -w "$PWD/build/windows/x64/runner/Release")" \
             "-DOutputDir=$(cygpath -w "$GITHUB_WORKSPACE/dist")" packaging/windows/kizilelma.iss
       # Installs silently into a temporary folder, checks the app is there, then uninstalls.
       - name: Check the installer
